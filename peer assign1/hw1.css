@@ -1,0 +1,35 @@
+
+header{
+    background-color:#9ea0a2;
+}
+
+/*h1{
+    color:#ffffff;
+    text-transform:uppercase;
+    text-align:center;
+}*/
+
+h2{
+    color:#112594;
+    text-transform:uppercase;
+}
+
+section{
+    background-color:#7b7b7b;
+}
+
+a{
+    background-color:#bbb9b9;
+    color:#000000;
+    text-align:center;
+}
+
+.first{
+    color:#fffff0;
+    text-transform:uppercase;
+    text-align:center;
+}
+
+img{
+    display:none;
+}
