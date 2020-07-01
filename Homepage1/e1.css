@@ -1,0 +1,57 @@
+/* 
+Together-2
+ */
+ body{
+	background:#F7DCDA ;
+	margin:2%;
+	font-size: 150%;
+
+}
+
+header{
+	background: #F0B281 ;
+	text-align: center;
+	padding-bottom: 15px; /* padding is the margin */
+}
+
+h1{
+	color: #ffffff;
+}
+
+nav{
+	font-variant: small-caps;
+	font-family: Arial, "Times New Roman", serif;
+	font-size: 150%;
+        margin-right: 2%;
+}
+
+h2{
+	color: #666666;
+	background: #D8DAD9;
+}
+
+section{
+	width:30%;
+	margin-right: 2%; /* the margin change the distance */
+	display:inline-block; /* to change the block */
+	float:left;
+}
+
+summary{
+	font-style:normal;
+}
+
+details{
+	font-style: italic;
+}
+
+footer{
+	background: #B2CDED;
+	height:80px;
+	clear: both;/* no floating around */
+}
+
+img{
+	width: 75px;
+}
+
