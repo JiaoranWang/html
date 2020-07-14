@@ -10,50 +10,101 @@
 			<h1>吱吱汪汪噜噜一家</h1>
 			<nav>
 				<a href="index.html">⭐回到主页</a>
-				<a href="teams.html" class = "active">⭐时间轴</a>
+				<a href="pics.html" class = "active">⭐照片墙</a>
 				
 			</nav>
 		</header>
 		<main>
 			
-			<section class = "right">
-				<h2>College Teams</h2>
-				<p>This is not meant to be a comprehensive list of all the teams, just a sampling from around the United States.  I focused on the ones that I though had cool names.</p>
-				<table>
-					<tr><th>♥ 准备工作</th>
-						<th>♥ 日期</th>
-						<th>No.备注</th></tr>
-<tr>
-						<td>※ 生日礼物挑选</td>
-						<td>07/12</td>
-						<td>小CK，我先用着啦</td>
-					</tr>					
-<tr>
-						<td>※ 初步想法确定</td>
-						<td>07/14</td>
-						<td>动态界面·符合16*9观感</td>
-					</tr>
-					<tr>
-						<td>※ 网页框架搭建</td>
-						<td>07/14</td>
-						<td>/</td>
-					</tr>
-					
-					<tr>
-						<td>※ 网页·页面优化</td>
-						<td>07/16</td>
-						<td>js·烟花效果</td>
-					</tr>
-					<tr>
-						<td>※ 生日蛋糕/鲜花预定</td>
-						<td>07/25</td>
-						<td>宁宁</td>
-					</tr>
-				</table>
+			<section class = "pics">
+				<h2>🎂 照片们</h2>
+				
+			<a ><img src= "imgs/14.jpg"> </a>
+<a ><img src= "imgs/15.jpg"> </a>
+
+<a ><img src= "imgs/16.jpg"> </a>
+
+<a ><img src= "imgs/17.jpg"> </a>
+
+<a ><img src= "imgs/19.jpg"> </a>
+<a ><img src= "imgs/20.jpg"> </a>
+			<a > <img src= "imgs/21.jpg"></a>
+<a ><img src= "imgs/18.jpg"> </a>
+			<a> </a>
+		
+				
 			</section>
 		</main>
 	
- 
+ <script src="Flame/move.js"></script>
+ <script>
+  
+ class Firework {
+  constructor(x, y) {//x,y鼠标的位置
+  this.x = x;//将水平位置赋值给this.x属性。
+  this.y = y;//将垂直位置赋值给this.y属性。
+  this.ch = document.documentElement.clientHeight;//可视区的高度
+  }
+  init() {
+  //1.创建烟花节点。
+  this.firebox = document.createElement('div');
+  this.firebox.style.cssText = `width:5px;height:5px;background:#fff;position:absolute;left:${this.x}px;top:${this.ch}px;`;
+  document.body.appendChild(this.firebox);
+  this.firemove();//创建完成，直接运动。
+  }
+  //2.烟花节点运动
+  firemove() {
+  bufferMove(this.firebox, { top: this.y }, () => {
+   document.body.removeChild(this.firebox);
+   //当烟花节点消失的时候，创建烟花碎片
+   this.createfires()
+  });
+  }
+  //3.当前鼠标点击的位置，随机产生30-60个盒子。(随机颜色)
+  createfires() {
+  for (let i = 1; i <= this.rannum(30, 60); i++) {
+   this.fires = document.createElement('div');
+   this.fires.style.cssText = `width:5px;height:5px;background:rgb(${this.rannum(0, 255)},${this.rannum(0, 255)},${this.rannum(0, 255)});position:absolute;left:${this.x}px;top:${this.y}px;`;
+   document.body.appendChild(this.fires);
+   this.fireboom(this.fires);//设计成一个一个运动，等到循环结束，出现整体结果。
+  }
+  }
+  //4.烟花碎片运动。
+  fireboom(obj) {
+  //存储当前obj的初始值。
+  let initx = this.x;
+  let inity = this.y;
+  
+  //随机产生速度(水平和垂直方向都是随机的,符号也是随机的)。
+  let speedx = parseInt((Math.random() > 0.5 ? '-' : '') + this.rannum(1, 15));
+  let speedy = parseInt((Math.random() > 0.5 ? '-' : '') + this.rannum(1, 15));
+  
+  obj.timer = setInterval(() => {
+   initx += speedx;
+   inity += speedy++; //模拟重力加速度(垂直方向比水平方向快一些)
+   if (inity >= this.ch) {
+   document.body.removeChild(obj);
+   clearInterval(obj.timer);
+   }
+   obj.style.left = initx + 'px';
+   obj.style.top = inity + 'px';
+  }, 1000 / 60);
+  
+  }
+  //随机区间数
+  rannum(min, max) {
+  return Math.round(Math.random() * (max - min) + min);
+  }
+ }
+  
+  
+ document.onclick = function (ev) {
+  var ev = ev || window.event;
+  //ev.clientX,ev.clientY//获取的鼠标的位置
+  new Firework(ev.clientX, ev.clientY).init();
+ }
+ </script>
+
 
 </body>
 </html>
