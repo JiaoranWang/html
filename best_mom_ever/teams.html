@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>⭐生日企划⭐</title>
+		<link rel="stylesheet" href="css/hw1.css">
+	</head>
+	<body>
+		<header>
+			<h1>生日计划</h1>
+			<nav>
+				<a href="index.html">⭐回到主页</a>
+				<a href="teams.html" class = "active">⭐时间轴</a>
+				
+			</nav>
+		</header>
+		<main>
+			<aside class = "left">
+				<a href="https://commons.wikimedia.org/wiki/File%3AUltimate_Frisbee%2C_Jul_2009_-_17.jpg"><img src="https://upload.wikimedia.org/wikipedia/commons/5/5d/Ultimate_Frisbee%2C_Jul_2009_-_19.jpg" alt="Creative Common Ultimate Photo" title="By Ed Yourdon [CC BY-SA 2.0 (http://creativecommons.org/licenses/by-sa/2.0)], via Wikimedia Commons"/> </a>
+
+				<a href="https://commons.wikimedia.org/wiki/File%3AUltimate_Frisbee_Colorado_Cup_2005.jpg"><img alt="Ultimate Frisbee Colorado Cup 2005" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Ultimate_Frisbee_Colorado_Cup_2005.jpg/512px-Ultimate_Frisbee_Colorado_Cup_2005.jpg"/></a>
+
+
+				<a href="https://www.flickr.com/photos/paradisecoastie/15409853738/" title="Ultimate Frisbee"><img src="https://farm4.staticflickr.com/3948/15409853738_7dbfbfbac7_k.jpg"  alt="Ultimate Frisbee"></a>
+			</aside>
+			<section class = "right">
+				<h2>College Teams</h2>
+				<p>This is not meant to be a comprehensive list of all the teams, just a sampling from around the United States.  I focused on the ones that I though had cool names.</p>
+				<table>
+					<tr><th>♥ 准备工作</th>
+						<th>♥ 日期</th>
+						<th>No.备注</th></tr>
+					<tr>
+						<td>※ 初步想法确定</td>
+						<td>Colorado</td>
+						<td>Men's</td>
+					</tr>
+					<tr>
+						<td>※ 网页框架搭建</td>
+						<td>Maine</td>
+						<td>Women's</td>
+					</tr>
+					<tr>
+						<td>※ ·生日蛋糕预定</td>
+						<td>Rhode Island</td>
+						<td>Women's</td>
+					</tr>
+					<tr>
+						<td>※ 网页·页面优化</td>
+						<td>Washington DC</td>
+						<td>Men's</td>
+					</tr>
+					<tr>
+						<td>Jive Turkeys (Dickinson College)</td>
+						<td>Pennsylvania</td>
+						<td>Both</td>
+					</tr>
+					<tr>
+						<td>Knights of the Round Disc(Longwood College)</td>
+						<td>Virginia</td>
+						<td>Men's</td>
+					</tr>
+					<tr>
+						<td>Ninjas (University of Minnesota)</td>
+						<td>Minnesota</td>
+						<td>Women's</td>
+					</tr>
+					<tr>
+						<td>Flying Squirrels (Hendrix College)</td>
+						<td>Arizona</td>
+						<td>Men's</td>
+					</tr>
+					<tr>
+						<td>Superfly (Yale)</td>
+						<td>Connecticut</td>
+						<td>Men's</td>
+					</tr>
+					<tr>
+						<td>Flywheel (University of Michigan</td>
+						<td>Michigan</td>
+						<td>Women's</td>
+					</tr>
+				</table>
+			</section>
+		</main>
+	
+ <script src="Flame/move.js"></script>
+ <script>
+  
+ class Firework {
+  constructor(x, y) {//x,y鼠标的位置
+  this.x = x;//将水平位置赋值给this.x属性。
+  this.y = y;//将垂直位置赋值给this.y属性。
+  this.ch = document.documentElement.clientHeight;//可视区的高度
+  }
+  init() {
+  //1.创建烟花节点。
+  this.firebox = document.createElement('div');
+  this.firebox.style.cssText = `width:5px;height:5px;background:#fff;position:absolute;left:${this.x}px;top:${this.ch}px;`;
+  document.body.appendChild(this.firebox);
+  this.firemove();//创建完成，直接运动。
+  }
+  //2.烟花节点运动
+  firemove() {
+  bufferMove(this.firebox, { top: this.y }, () => {
+   document.body.removeChild(this.firebox);
+   //当烟花节点消失的时候，创建烟花碎片
+   this.createfires()
+  });
+  }
+  //3.当前鼠标点击的位置，随机产生30-60个盒子。(随机颜色)
+  createfires() {
+  for (let i = 1; i <= this.rannum(30, 60); i++) {
+   this.fires = document.createElement('div');
+   this.fires.style.cssText = `width:5px;height:5px;background:rgb(${this.rannum(0, 255)},${this.rannum(0, 255)},${this.rannum(0, 255)});position:absolute;left:${this.x}px;top:${this.y}px;`;
+   document.body.appendChild(this.fires);
+   this.fireboom(this.fires);//设计成一个一个运动，等到循环结束，出现整体结果。
+  }
+  }
+  //4.烟花碎片运动。
+  fireboom(obj) {
+  //存储当前obj的初始值。
+  let initx = this.x;
+  let inity = this.y;
+  
+  //随机产生速度(水平和垂直方向都是随机的,符号也是随机的)。
+  let speedx = parseInt((Math.random() > 0.5 ? '-' : '') + this.rannum(1, 15));
+  let speedy = parseInt((Math.random() > 0.5 ? '-' : '') + this.rannum(1, 15));
+  
+  obj.timer = setInterval(() => {
+   initx += speedx;
+   inity += speedy++; //模拟重力加速度(垂直方向比水平方向快一些)
+   if (inity >= this.ch) {
+   document.body.removeChild(obj);
+   clearInterval(obj.timer);
+   }
+   obj.style.left = initx + 'px';
+   obj.style.top = inity + 'px';
+  }, 1000 / 60);
+  
+  }
+  //随机区间数
+  rannum(min, max) {
+  return Math.round(Math.random() * (max - min) + min);
+  }
+ }
+  
+  
+ document.onclick = function (ev) {
+  var ev = ev || window.event;
+  //ev.clientX,ev.clientY//获取的鼠标的位置
+  new Firework(ev.clientX, ev.clientY).init();
+ }
+ </script>
+
+</body>
+</html>

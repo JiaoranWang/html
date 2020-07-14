@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>欢迎，请登录</title>
+		<style>
+			body{
+				margin: 0px;
+				padding: 0px;
+				color: white;
+			}
+			.container{
+				height: 100vh;
+				box-sizing: border-box;
+				border: none;
+				box-shadow: 10px 10px 5px white;
+				-webkit-box-sizing: border-box;
+				-moz-box-sizing: border-box;
+				display: flex;
+				display: -webkit-flex;
+				display: -webkit-flex;
+				align-items: center;
+				-webkit-align-items: center;
+				justify-content: center;
+				-webkit-justify-content: center;
+				background-image: url(img/login_bg.gif);
+			}
+			.loginer{
+				text-align: center;
+				width: 400px;
+				height: 280px;
+				background-color: rgba(0,0,0, 0.5);
+				border-radius: 10px;
+			}
+			.loginer *{
+				opacity: 1 !important;
+				color: white;
+				font-weight: bold;
+				font-size: 18px;
+			}
+			.loginer .header{
+				border: none;
+				border-bottom: 1px solid white;
+				border-image: -webkit-linear-gradient(to right, rgb(201, 115, 255), rgb(20, 11, 255)) 30 30;
+				border-image: -moz-linear-gradient(to right, rgb(201, 115, 255), rgb(20, 11, 255)) 30 30;
+				border-image: linear-gradient(to right, rgb(201, 115, 255), rgb(20, 11, 255)) 30 30;
+				line-height: 35px;
+			}
+			.loginer .content{
+				border: none;
+				margin-top: 30px;
+				height: 100px;
+			}
+			.loginer .row{
+				display: flex;
+				flex-direction: row;
+				margin-top: 20px;
+			}
+			.loginer .label{
+				width: 130px;
+				flex-grow: 0;
+				margin-left: 10px;
+			}
+			.loginer .ipt{
+				flex-grow: 1;
+				margin-right: 10px;
+				border-radius: 10px;
+				padding: 1px;
+				border: 1px solid blueviolet;
+				height: 30px;
+			}
+			.ipt input{
+				border: none;
+				background: none;
+				width: 90%;
+				border-style: none;
+				outline: none;
+				height: 30px;
+				color: rgb(180, 80, 180);
+			}
+			.footer{
+				width: 100%;
+			}
+			.footer button{
+				border-radius: 10px;
+				outline: none;
+				height: 35px;
+				border: none;
+				margin: 10px 20px;
+				width: 360px;
+				display: block;
+				opacity: 1 !important;
+				background: linear-gradient(to right, rgb(40, 1, 155), rgb(44, 1, 155));
+			}
+			.border_bg{
+				 border-image: -webkit-linear-gradient(right, rgb(201, 115, 255), rgb(20, 11, 255)) 30 30;
+				 border-image: -moz-linear-gradient(right, rgb(201, 115, 255), rgb(20, 11, 255)) 30 30;
+				 border-image: linear-gradient(right, rgb(201, 115, 255), rgb(20, 11, 255)) 30 30;
+			}
+			.font_bg{
+				background-image: -webkit-linear-gradient(right, rgb(201, 115, 255), rgb(20, 11, 255));
+				background-image: -moz-linear-gradient(right, rgb(201, 115, 255), rgb(20, 11, 255));
+				background-image: linear-gradient(right, rgb(201, 115, 255), rgb(20, 11, 255));
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="loginer">
+				<div class="header border_bg">
+					<h1 class="font_bg">xxx system</h1>
+				</div>
+				<div class="content">
+					<div class="row">
+						<div class="label font_bg">
+							username:
+						</div>
+						<div class="ipt">
+							<input onblur="iptFocusOut(this)" onfocus="iptFocus(this)" autocomplete="off" type="text" name="username"
+							 maxlength="50">
+						</div>
+					</div>
+					<div class="row">
+						<div class="label font_bg">
+							password:
+						</div>
+						<div class="ipt ">
+							<input onblur="iptFocusOut(this)" onfocus="iptFocus(this)" autocomplete="off" type="password" name="password"
+							 maxlength="50">
+						</div>
+					</div>
+				</div>
+				<div class="footer">
+					<button><label class="font_bg">login</label></button>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script>
+		function iptFocus(target) {
+			target.parentNode.style.borderColor = 'blue'
+		}
+		
+		function iptFocusOut(target) {
+			target.parentNode.style.borderColor = 'blueviol t'
+		}
+	</script>
+</html>
