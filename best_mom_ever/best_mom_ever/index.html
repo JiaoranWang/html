@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	  <meta charset="UTF-8">
+	  <title>♥ ♥ 妈妈生日快乐！！</title>
+	  <link rel="stylesheet" href="css/hw1.css">
+</head>
+<body>
+	  <header>
+    <h1>祝猪猪妈妈生日快乐~</h1>
+		    <nav>
+			      <a href="index.html" class = "active">⭐主页⭐</a>
+			      <a href="https://www.weibo.com/u/6065708184?is_all=1">⭐对妈妈说⭐</a>
+                              <a href="teams.html">⭐生日企划⭐</a>
+			      <a href="login.html">⭐照片墙⭐</a>
+			    
+		    </nav>
+</header>
+		<aside class = "left">
+			<a href=""/><img src= "imgs/4.jpg"> </a>
+<a href=""/><img src= "imgs/1.jpg"> </a>
+
+<a href=""/><img src= "imgs/3.jpg"> </a>
+
+
+			<a href=" https://www.google.com/search?ei=xdz7XveoGYuE-gTkoJbICg&q=USC&oq=USC&gs_lcp=CgZwc3ktYWIQAzIFCAAQkQIyBwgAELEDEEMyBQgAEIMBMgUIABCDATIFCAAQsQMyBQgAELEDMgIIADIFCAAQsQMyAggAMgUIABCxAzoECAAQQzoHCAAQgwEQQ1CqJ1jFKmDNLWgAcAB4AIABWYgB_AGSAQEzmAEAoAEBqgEHZ3dzLXdpeg&sclient=psy-ab&ved=0ahUKEwi3n83r6arqAhULgp4KHWSQBakQ4dUDCAw&uact=5"/> <img src= "imgs/5.jpg"></a>
+			<a href="https://en.wikipedia.org/wiki/Harbin_Engineering_University" title="What About Undergrat"><img src="imgs/headerpic.jpg" alt="What About Me"></a>
+		</aside>
+		<section class = "right">
+			<h2 class = "h2">※ 写在前面</h2>
+			<p>🐻 今年注定是<strong>不平凡的一年</strong>，我也是第二次没有在家和妈妈一起过生日</p>
+			
+<p>🐀 妈妈这一年也改变了很多，更为积极而温和的平衡生活与工作中遇到的事情。就算是不开心的事，妈妈也会解读得很开心</p>
+<p> 🐕最最想说的话还是<strong>感谢爸爸妈妈对我一直以来的支持与鼓励</strong>，你们永远是我最坚强的后盾，无论哪里</p>
+<p><strong>🐖 祝世界上最棒的妈妈生日快乐，永远年轻美丽乐观向上！</strong></p>
+
+<p class = "fontright">※※※※※※  娇宝 07/28/2020</p>
+
+<p>🎂请点击<strong class = "font"> “对妈妈说”</strong> 按钮🔔</p>		
+<img src= "imgs/7.jpg"> 
+</section>
+
+
+
+
+ <script src="Flame/move.js"></script>
+ <script>
+  
+ class Firework {
+  constructor(x, y) {//x,y鼠标的位置
+  this.x = x;//将水平位置赋值给this.x属性。
+  this.y = y;//将垂直位置赋值给this.y属性。
+  this.ch = document.documentElement.clientHeight;//可视区的高度
+  }
+  init() {
+  //1.创建烟花节点。
+  this.firebox = document.createElement('div');
+  this.firebox.style.cssText = `width:5px;height:5px;background:#fff;position:absolute;left:${this.x}px;top:${this.ch}px;`;
+  document.body.appendChild(this.firebox);
+  this.firemove();//创建完成，直接运动。
+  }
+  //2.烟花节点运动
+  firemove() {
+  bufferMove(this.firebox, { top: this.y }, () => {
+   document.body.removeChild(this.firebox);
+   //当烟花节点消失的时候，创建烟花碎片
+   this.createfires()
+  });
+  }
+  //3.当前鼠标点击的位置，随机产生30-60个盒子。(随机颜色)
+  createfires() {
+  for (let i = 1; i <= this.rannum(30, 60); i++) {
+   this.fires = document.createElement('div');
+   this.fires.style.cssText = `width:5px;height:5px;background:rgb(${this.rannum(0, 255)},${this.rannum(0, 255)},${this.rannum(0, 255)});position:absolute;left:${this.x}px;top:${this.y}px;`;
+   document.body.appendChild(this.fires);
+   this.fireboom(this.fires);//设计成一个一个运动，等到循环结束，出现整体结果。
+  }
+  }
+  //4.烟花碎片运动。
+  fireboom(obj) {
+  //存储当前obj的初始值。
+  let initx = this.x;
+  let inity = this.y;
+  
+  //随机产生速度(水平和垂直方向都是随机的,符号也是随机的)。
+  let speedx = parseInt((Math.random() > 0.5 ? '-' : '') + this.rannum(1, 15));
+  let speedy = parseInt((Math.random() > 0.5 ? '-' : '') + this.rannum(1, 15));
+  
+  obj.timer = setInterval(() => {
+   initx += speedx;
+   inity += speedy++; //模拟重力加速度(垂直方向比水平方向快一些)
+   if (inity >= this.ch) {
+   document.body.removeChild(obj);
+   clearInterval(obj.timer);
+   }
+   obj.style.left = initx + 'px';
+   obj.style.top = inity + 'px';
+  }, 1000 / 60);
+  
+  }
+  //随机区间数
+  rannum(min, max) {
+  return Math.round(Math.random() * (max - min) + min);
+  }
+ }
+  
+  
+ document.onclick = function (ev) {
+  var ev = ev || window.event;
+  //ev.clientX,ev.clientY//获取的鼠标的位置
+  new Firework(ev.clientX, ev.clientY).init();
+ }
+ </script>
+
+
+
+
+
+
+
+
+<footer>
+		    <p>There is my homepage. Contact me at: <a href="mailto:jiaoranw@usc.edu">Jiaoran Wang</a></p>
+	<address>
+
+  </footer>
+	</body>
+</html>
