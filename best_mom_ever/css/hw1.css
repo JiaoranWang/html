@@ -166,7 +166,7 @@ section{
     min-width: 230px;
     height: 1380px;
     text-align: center;
-    margin-right: 10 px;
+    margin-right: 10px;
 }
 
 .right{
@@ -210,7 +210,7 @@ box-sizing: border-box;
     height:500px;
     border: 1.5px solid #000000;
     margin-top: 50px;
-    margin-left: 8%;
+    margin-left: 8px;
     
 }
 
@@ -234,7 +234,7 @@ box-sizing: border-box;
 
 }
 table{
-    margin-left:8%;
+    margin-left:40px
     margin-top: 25px;
     margin-bottom: 25px;
     font-family:Arial, Helvetica, sans-serif;
